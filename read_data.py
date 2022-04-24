@@ -1,4 +1,11 @@
-﻿import os
+﻿# -*- coding: utf-8 -*-
+"""
+@Author ：Shimon-Cheung
+@Date   ：2022/4/24 10:34
+@Desc   ：pytorch中自定义数据集的使用
+"""
+
+import os
 
 from PIL import Image
 from torch.utils.data import Dataset
@@ -12,7 +19,7 @@ class Mydata(Dataset):
         self.img_list = os.listdir(root_dir + label_dir)
 
     def __getitem__(self, idx):
-        # 返回一条数据，已经label
+        # 返回一条数据，以及label
         img_path = self.root_dir + self.label_dir + "/" + self.img_list[idx]
         img = Image.open(img_path)
         return img, self.label_dir
